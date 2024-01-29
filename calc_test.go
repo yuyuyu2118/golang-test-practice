@@ -1,6 +1,9 @@
 package calc
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 
 func TestMax(t *testing.T) {
 	got := Max(1, 2)
@@ -8,4 +11,10 @@ func TestMax(t *testing.T) {
 	if got != want {
 		t.Errorf("Max(1, 2) == %d, want %d", got, want)
 	}
+}
+
+func ExampleMax() {
+	fmt.Println(Max(1, 2))
+	// Output:
+	// 2
 }
