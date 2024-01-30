@@ -76,3 +76,19 @@ func TestMin(t *testing.T) {
 		})
 	}
 }
+
+func BenchmarkMax(b *testing.B) {
+	x, y := int64(1), int64(math.MaxInt64)
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		Max(x, y)
+	}
+}
+
+func BenchmarkMin(b *testing.B) {
+	x, y := int64(1), int64(math.MinInt64)
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		Min(x, y)
+	}
+}
