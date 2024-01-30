@@ -25,3 +25,24 @@ func TestMax(t *testing.T) {
 		})
 	}
 }
+
+func TestMin(t *testing.T) {
+	tests := []struct {
+		name string
+		x    int
+		y    int
+		want int
+	}{
+		{"xが小さい", 2, 1, 1},
+		{"yが小さい", 1, 3, 1},
+		{"xとyが同じ", 5, 5, 5},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := Min(tt.x, tt.y); got != tt.want {
+				t.Errorf("Min(%d, %d) == %d, want %d", tt.x, tt.y, got, tt.want)
+			}
+		})
+	}
+}
