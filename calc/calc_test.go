@@ -22,13 +22,13 @@ func TestMax(t *testing.T) {
 		{"yがxより大きい負の数", -5, -1, -1},
 		{"xとyが同じ負の数", -5, -5, -5},
 		// intの最大値の場合
-		{"xがyより大きく、intの最大値に近い", math.MaxInt64 - 1, math.MaxInt64 - 2, math.MaxInt64 - 1},
-		{"yがxより大きく、intの最大値に近い", math.MaxInt64 - 2, math.MaxInt64 - 1, math.MaxInt64 - 1},
-		{"xとyが同じで、intの最大値に近い", math.MaxInt64 - 1, math.MaxInt64 - 1, math.MaxInt64 - 1},
+		{"xがyより大きく、intの最大値", math.MaxInt64, math.MaxInt64 - 1, math.MaxInt64},
+		{"yがxより大きく、intの最大値", math.MaxInt64 - 1, math.MaxInt64, math.MaxInt64},
+		{"xとyが同じで、intの最大値", math.MaxInt64, math.MaxInt64, math.MaxInt64},
 		// intの最小値の場合
-		{"xがyより大きく、intの最小値に近い", math.MinInt64 + 1, math.MinInt64 + 2, math.MinInt64 + 2},
-		{"yがxより大きく、intの最小値に近い", math.MinInt64 + 2, math.MinInt64 + 1, math.MinInt64 + 2},
-		{"xとyが同じで、intの最小値に近い", math.MinInt64 + 1, math.MinInt64 + 1, math.MinInt64 + 1},
+		{"xがyより大きく、intの最小値", math.MinInt64 + 1, math.MinInt64, math.MinInt64 + 1},
+		{"yがxより大きく、intの最小値", math.MinInt64, math.MinInt64 + 1, math.MinInt64 + 1},
+		{"xとyが同じで、intの最小値", math.MinInt64, math.MinInt64, math.MinInt64},
 	}
 
 	for _, tt := range tests {
@@ -57,13 +57,13 @@ func TestMin(t *testing.T) {
 		{"yがxより小さい負の数", -5, -1, -5},
 		{"xとyが同じ負の数", -5, -5, -5},
 		// intの最大値の場合
-		{"xがyより小さく、intの最大値に近い", math.MaxInt64 - 2, math.MaxInt64 - 1, math.MaxInt64 - 2},
-		{"yがxより小さく、intの最大値に近い", math.MaxInt64 - 1, math.MaxInt64 - 2, math.MaxInt64 - 2},
-		{"xとyが同じで、intの最大値に近い", math.MaxInt64 - 1, math.MaxInt64 - 1, math.MaxInt64 - 1},
+		{"xがyより小さく、intの最大値", math.MaxInt64 - 1, math.MaxInt64, math.MaxInt64 - 1},
+		{"yがxより小さく、intの最大値", math.MaxInt64, math.MaxInt64 - 1, math.MaxInt64 - 1},
+		{"xとyが同じで、intの最大値", math.MaxInt64, math.MaxInt64, math.MaxInt64},
 		// intの最小値の場合
-		{"xがyより小さく、intの最小値に近い", math.MinInt64 + 2, math.MinInt64 + 1, math.MinInt64 + 1},
-		{"yがxより小さく、intの最小値に近い", math.MinInt64 + 1, math.MinInt64 + 2, math.MinInt64 + 1},
-		{"xとyが同じで、intの最小値に近い", math.MinInt64 + 1, math.MinInt64 + 1, math.MinInt64 + 1},
+		{"xがyより小さく、intの最小値", math.MinInt64, math.MinInt64 + 1, math.MinInt64},
+		{"yがxより小さく、intの最小値", math.MinInt64 + 1, math.MinInt64, math.MinInt64},
+		{"xとyが同じで、intの最小値", math.MinInt64, math.MinInt64, math.MinInt64},
 	}
 
 	for _, tt := range tests {
