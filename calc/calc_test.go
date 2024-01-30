@@ -7,6 +7,7 @@ import (
 
 // TestMax用のテーブル駆動テスト
 func TestMax(t *testing.T) {
+	t.Parallel()
 	tests := []struct {
 		name string
 		x    int64
@@ -42,6 +43,7 @@ func TestMax(t *testing.T) {
 
 // TestMin用のテーブル駆動テスト
 func TestMin(t *testing.T) {
+	t.Parallel()
 	tests := []struct {
 		name string
 		x    int64
