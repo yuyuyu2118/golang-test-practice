@@ -1,6 +1,7 @@
 package calc
 
 import (
+	"math"
 	"testing"
 )
 
@@ -12,9 +13,22 @@ func TestMax(t *testing.T) {
 		y    int
 		want int
 	}{
+		// 正の数の場合
 		{"xが大きい", 2, 1, 2},
 		{"yが大きい", 1, 3, 3},
 		{"xとyが同じ", 5, 5, 5},
+		// 負の数の場合
+		{"xが大きい", -2, -3, -2},
+		{"yが大きい", -5, -1, -1},
+		{"xとyが同じ", -5, -5, -5},
+		// intの最大値の場合
+		{"xが大きい", 1, math.MaxInt64, math.MaxInt64},
+		{"yが大きい", math.MaxInt64, 1, math.MaxInt64},
+		{"xとyが同じ", math.MaxInt64, math.MaxInt64, math.MaxInt64},
+		// intの最小値の場合
+		{"xが大きい", 1, math.MinInt64, 1},
+		{"yが大きい", math.MinInt64, 1, 1},
+		{"xとyが同じ", math.MinInt64, math.MinInt64, math.MinInt64},
 	}
 
 	for _, tt := range tests {
