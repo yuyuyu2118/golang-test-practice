@@ -4,7 +4,7 @@ import (
 	"testing"
 )
 
-// テーブル駆動テスト
+// TestMax用のテーブル駆動テスト
 func TestMax(t *testing.T) {
 	tests := []struct {
 		name string
@@ -26,6 +26,7 @@ func TestMax(t *testing.T) {
 	}
 }
 
+// TestMin用のテーブル駆動テスト
 func TestMin(t *testing.T) {
 	tests := []struct {
 		name string
