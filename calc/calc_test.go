@@ -77,6 +77,31 @@ func TestMin(t *testing.T) {
 	}
 }
 
+func TestIsPrime(t *testing.T) {
+	t.Parallel()
+	tests := []struct {
+		name string
+		num  int
+		want bool
+	}{
+		{"0の場合", 0, false},
+		{"1の場合", 1, false},
+		{"素数の場合", 2, true},
+		{"素数ではない場合", 4, false},
+		{"負の数の場合", -1, false},
+		{"数値が大きい素数の場合", 1000000009, true},
+		{"数値が大きい素数ではない場合", 1000000008, false},
+		{"数値がintの最大値の場合", math.MaxInt64, false},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := IsPrime(tt.num); got != tt.want {
+				t.Errorf("%s: IsPrime(%d) = %v, want %v", tt.name, tt.num, got, tt.want)
+			}
+		})
+	}
+}
+
 func BenchmarkMax(b *testing.B) {
 	x, y := int64(1), int64(math.MaxInt64)
 	b.ResetTimer()
@@ -90,5 +115,13 @@ func BenchmarkMin(b *testing.B) {
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		Min(x, y)
+	}
+}
+
+func BenchmarkIsPrime(b *testing.B) {
+	max := 1000000009
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		IsPrime(max)
 	}
 }
