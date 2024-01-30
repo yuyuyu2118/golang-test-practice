@@ -34,7 +34,7 @@ func TestMax(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := Max(tt.x, tt.y); got != tt.want {
-				t.Errorf("Max(%d, %d) = %d, want %d", tt.x, tt.y, got, tt.want)
+				t.Errorf("%s: Max(%d, %d) = %d, want %d", tt.name, tt.x, tt.y, got, tt.want)
 			}
 		})
 	}
@@ -69,7 +69,7 @@ func TestMin(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := Min(tt.x, tt.y); got != tt.want {
-				t.Errorf("Min(%d, %d) = %d, want %d", tt.x, tt.y, got, tt.want)
+				t.Errorf("%s: Min(%d, %d) = %d, want %d", tt.name, tt.x, tt.y, got, tt.want)
 			}
 		})
 	}
