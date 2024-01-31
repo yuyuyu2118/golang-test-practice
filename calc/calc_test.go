@@ -77,6 +77,60 @@ func TestMin(t *testing.T) {
 	}
 }
 
+func TestCompare(t *testing.T) {
+	t.Run("aの方がbより大きい場合", func(t *testing.T) {
+		t.Parallel()
+		a, b := 2, 1
+		larger, smaller := Compare[int](a, b)
+		if larger != a || smaller != b {
+			t.Errorf("Compare(%d, %d) = %d, %d, want %d, %d", a, b, larger, smaller, a, b)
+		}
+	})
+
+	t.Run("bの方がaより大きい場合", func(t *testing.T) {
+		t.Parallel()
+		a, b := 1, 2
+		larger, smaller := Compare[int](a, b)
+		if larger != b || smaller != a {
+			t.Errorf("Compare(%d, %d) = %d, %d, want %d, %d", a, b, larger, smaller, b, a)
+		}
+	})
+
+	t.Run("aとbが同じ場合", func(t *testing.T) {
+		t.Parallel()
+		a, b := 1, 1
+		larger, smaller := Compare[int](a, b)
+		if larger != a || smaller != b {
+			t.Errorf("Compare(%d, %d) = %d, %d, want %d, %d", a, b, larger, smaller, a, b)
+		}
+	})
+}
+
+func TestIsPrime(t *testing.T) {
+	t.Parallel()
+	tests := []struct {
+		name string
+		num  int
+		want bool
+	}{
+		{"0の場合", 0, false},
+		{"1の場合", 1, false},
+		{"素数の場合", 2, true},
+		{"素数ではない場合", 4, false},
+		{"負の数の場合", -1, false},
+		{"数値が大きい素数の場合", 1000000009, true},
+		{"数値が大きい素数ではない場合", 1000000008, false},
+		{"数値がintの最大値の場合", math.MaxInt64, false},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := IsPrime(tt.num); got != tt.want {
+				t.Errorf("%s: IsPrime(%d) = %v, want %v", tt.name, tt.num, got, tt.want)
+			}
+		})
+	}
+}
+
 func BenchmarkMax(b *testing.B) {
 	x, y := int64(1), int64(math.MaxInt64)
 	b.ResetTimer()
@@ -90,5 +144,21 @@ func BenchmarkMin(b *testing.B) {
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		Min(x, y)
+	}
+}
+
+func BenchmarkCompare(b *testing.B) {
+	a, c := 1, 2
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		Compare[int](a, c)
+	}
+}
+
+func BenchmarkIsPrime(b *testing.B) {
+	max := 1000000009
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		IsPrime(max)
 	}
 }
