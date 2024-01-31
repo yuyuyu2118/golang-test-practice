@@ -147,6 +147,14 @@ func BenchmarkMin(b *testing.B) {
 	}
 }
 
+func BenchmarkCompare(b *testing.B) {
+	a, c := 1, 2
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		Compare[int](a, c)
+	}
+}
+
 func BenchmarkIsPrime(b *testing.B) {
 	max := 1000000009
 	b.ResetTimer()
