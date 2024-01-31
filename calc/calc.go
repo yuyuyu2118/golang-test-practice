@@ -1,5 +1,9 @@
 package calc
 
+import (
+	"golang.org/x/exp/constraints"
+)
+
 // Max returns the larger of x or y.
 func Max(x, y int64) int64 {
 	if x < y {
@@ -14,6 +18,14 @@ func Min(x, y int64) int64 {
 		return x
 	}
 	return y
+}
+
+// Compare takes two ordered values and returns the larger and the smaller one.
+func Compare[T constraints.Ordered](a, b T) (larger, smaller T) {
+	if a < b {
+		return b, a
+	}
+	return a, b
 }
 
 // IsPrime determines whether a number is a prime.
