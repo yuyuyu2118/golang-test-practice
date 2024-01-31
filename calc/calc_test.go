@@ -77,6 +77,35 @@ func TestMin(t *testing.T) {
 	}
 }
 
+func TestCompare(t *testing.T) {
+	t.Run("aの方がbより大きい場合", func(t *testing.T) {
+		t.Parallel()
+		a, b := 2, 1
+		larger, smaller := Compare[int](a, b)
+		if larger != a || smaller != b {
+			t.Errorf("Compare(%d, %d) = %d, %d, want %d, %d", a, b, larger, smaller, a, b)
+		}
+	})
+
+	t.Run("bの方がaより大きい場合", func(t *testing.T) {
+		t.Parallel()
+		a, b := 1, 2
+		larger, smaller := Compare[int](a, b)
+		if larger != b || smaller != a {
+			t.Errorf("Compare(%d, %d) = %d, %d, want %d, %d", a, b, larger, smaller, b, a)
+		}
+	})
+
+	t.Run("aとbが同じ場合", func(t *testing.T) {
+		t.Parallel()
+		a, b := 1, 1
+		larger, smaller := Compare[int](a, b)
+		if larger != a || smaller != b {
+			t.Errorf("Compare(%d, %d) = %d, %d, want %d, %d", a, b, larger, smaller, a, b)
+		}
+	})
+}
+
 func TestIsPrime(t *testing.T) {
 	t.Parallel()
 	tests := []struct {
