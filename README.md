@@ -2,6 +2,7 @@
 
 ## 練習に使ったサイト
 - [twihike様](https://www.twihike.dev/docs/golang-primer/testing)
+- https://andmorefine.gitbook.io/learn-go-with-tests/
 
 ### gitコマンド IssueからPRまで
 ブランチ作成
