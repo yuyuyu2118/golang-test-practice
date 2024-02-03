@@ -46,3 +46,13 @@ git push origin --delete feature/issue-1
 git fetch --prune
 git branch -a
 ```
+
+### テストの実行
+```
+go test .
+```
+
+### テストのカバレッジを見る
+```
+go test -cover .
+```
